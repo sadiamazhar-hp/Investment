@@ -1,0 +1,114 @@
+.home-container{
+    border: 2px solid #000;
+}
+.home-container h1 {
+    font-size: 24px;
+    font-style: bold;
+    color: #fff;
+}
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 10px;
+  }
+  
+  input {
+    width: 200px;
+    padding: 10px 15px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease-in-out;
+    outline: none;
+  }
+  
+  input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  input:focus {
+    border-color: #00bcd4;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  input:focus::placeholder {
+    opacity: 0;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #1b3783, #03032e);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .custom-button {
+    font-size: 16px;
+    position: relative;
+    margin: auto;
+    padding: 0.5em 1.5em;
+    border: none;
+    background: #fff;
+    transition: all 0.1s linear;
+    box-shadow: 0 0.4em 1em rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .custom-button:active {
+    transform: scale(0.95);
+  }
+  
+  .custom-button span {
+    color: #464646;
+    font-weight: bold;
+  }
+  
+  .custom-button .border {
+    position: absolute;
+    border: 0.15em solid #fff;
+    transition: all 0.3s 0.08s linear;
+    top: 50%;
+    left: 50%;
+    width: 9em;
+    height: 3em;
+    transform: translate(-50%, -50%);
+  }
+  
+  .custom-button:hover .border {
+    width: 9.9em;
+    height: 3.7em;
+  }
+  
+  .full-rounded {
+    border-radius: 1em;
+  }
+  
+  .loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid white;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

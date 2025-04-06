@@ -1,0 +1,61 @@
+.result-container{
+    border: 2px solid #000;
+    color: #fff;
+}
+h1{
+    font-size: 35px;
+    color: #67a1c2;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;  /* Makes text bold */
+    font-family: 'Arial', sans-serif;  /* Changes the font */
+    margin: 10px;
+}
+h2{
+    font-size: 35px;
+    color: #fff;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;  /* Makes text bold */
+    font-family: 'Arial', sans-serif;  
+    margin: 10px;
+}
+h3{
+    font-size: 23px;
+    color: #fff;
+    text-transform: capitalize;
+    font-family: 'Arial', sans-serif;  /* Changes the font */
+}
+.quote_summary{
+    border: 2px solid #ffffff;
+    color: #fff;
+}
+.Model{
+    border: 2px solid #fff;
+}
+.Model_Sample_Image{
+    width: 600px;
+}
+.NextDays_Prediction{
+    border: 2px solid #fff;
+    width: 40%;
+}
+.Prediction{
+    border: 2px solid #fff;
+    color: #ffffff;
+}
+.day-label .label {
+    padding-right: 20px; /* Adjust the space as per your need */
+  }
+.Model_Section_1{
+    margin: 20px;
+}
+.Model_Section_2{
+    margin: 20px;
+}
+.decision_idea div {
+    flex: 1; 
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ffffff;
+  }
