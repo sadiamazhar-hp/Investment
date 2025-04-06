@@ -873,6 +873,6 @@ if not os.path.exists("static"):
 
 
 
-# quote = "MSFT"
-# result = get_stock_prediction(quote)
-# print(result)
+quote = "MSFT"
+result = get_stock_prediction(quote)
+print(result)
