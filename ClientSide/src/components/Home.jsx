@@ -12,7 +12,7 @@ function Home({ setPrediction }) {
         console.log("RUNNED");
         setLoading(true); // Show loader
 
-        axios.post("http://127.0.0.1:5000/api/predict", { quote: stockSymbol }, { timeout: 60000 })
+        axios.post("http://127.0.0.1:5000/api/predict", { quote: stockSymbol }, { timeout: 180000 })
             .then(response => {
                 setLoading(false); // Hide loader
                 setPrediction(response.data); // Pass result to App.js

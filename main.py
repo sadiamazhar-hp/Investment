@@ -724,30 +724,52 @@ def retrieving_tweets_polarity(symbol):
             tw_pol="Overall Negative"
         return global_polarity,tw_list,tw_pol,pos,neg,neutral
     
-def recommending(df, global_polarity,today_stock,mean):
-        if mean is None or today_stock.iloc[-1]['Close'] is None:
-            print("⚠ Error: Missing mean or stock close price.")
-            return None, None
+# def recommending(df, polarity, today_stock, mean, quote):
+#         if mean is None or today_stock.iloc[-1]['Close'] is None:
+#             print("⚠ Error: Missing mean or stock close price.")
+#             return None, None
 
-            if global_polarity > 0:
-                idea="RISE"
-                decision="BUY"
-                print()
-                print("##############################################################################")
-                print("According to the ML Predictions and Sentiment Analysis of Tweets, a",idea,"in",quote,"stock is expected => ",decision)
-            elif global_polarity <= 0:
-                idea="FALL"
-                decision="SELL"
-                print()
-                print("##############################################################################")
-                print("According to the ML Predictions and Sentiment Analysis of Tweets, a",idea,"in",quote,"stock is expected => ",decision)
-        else:
-            idea="FALL"
-            decision="SELL"
-            print()
-            print("##############################################################################")
-            print("According to the ML Predictions and Sentiment Analysis of Tweets, a",idea,"in",quote,"stock is expected => ",decision)
-        return idea, decision
+#             if global_polarity > 0:
+#                 idea="RISE"
+#                 decision="BUY"
+#                 print()
+#                 print("##############################################################################")
+#                 print("According to the ML Predictions and Sentiment Analysis of Tweets, a",idea,"in",quote,"stock is expected => ",decision)
+#             elif global_polarity <= 0:
+#                 idea="FALL"
+#                 decision="SELL"
+#                 print()
+#                 print("##############################################################################")
+#                 print("According to the ML Predictions and Sentiment Analysis of Tweets, a",idea,"in",quote,"stock is expected => ",decision)
+#         else:
+#             idea="FALL"
+#             decision="SELL"
+#             print()
+#             print("##############################################################################")
+#             print("According to the ML Predictions and Sentiment Analysis of Tweets, a",idea,"in",quote,"stock is expected => ",decision)
+#         return idea, decision
+def recommending(df, polarity, today_stock, mean, quote):
+    # Check for missing values
+    if mean is None or today_stock.iloc[-1]['Close'] is None:
+        print("⚠ Error: Missing mean or stock close price.")
+        return None, None
+
+    # Analyze based on polarity
+    if polarity > 0:
+        idea = "RISE"
+        decision = "BUY"
+    else:
+        idea = "FALL"
+        decision = "SELL"
+
+    # Print recommendation
+    print()
+    print("##############################################################################")
+    print(f"According to the ML Predictions and Sentiment Analysis of Tweets, a {idea} in {quote} stock is expected => {decision}")
+    print("##############################################################################")
+
+    return idea, decision
+
 import os
 import pandas as pd
 import numpy as np
@@ -830,7 +852,8 @@ def get_stock_prediction(quote):
 
     # ✅ Ensure Matplotlib doesn't break due to categorical data
     try:
-        idea, decision = recommending(df, polarity, today_stock, mean)
+        idea, decision = recommending(df, polarity, today_stock, mean, quote)
+
     except Exception as e:
         idea, decision = None, None
         print(f"❌ Error in recommending(): {e}")

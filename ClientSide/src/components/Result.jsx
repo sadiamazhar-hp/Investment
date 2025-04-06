@@ -23,7 +23,8 @@ function Result({ prediction }) {
         <div className="Model_Section_1 flex flex-row items-center gap-6 p-4 border rounded-lg shadow-lg">
             <div className="flex flex-col items-center">
             <h3 className="text-lg font-bold mb-2">Past Data Prediction</h3>
-            <img className="Model_Sample_Image border " src={fsImage} alt="Sample Image" />
+            {/* <img className="Model_Sample_Image border " src={fsImage} alt="Sample Image" /> */}
+            <img className="Model_Sample_Image" src={`http://localhost:5000/static/LR_${prediction.quote}.png`} alt="Prediction Chart" />
             </div>
             <div className="flex flex-col gap-4">
             <div className="border p-3 w-48 text-center">
@@ -57,14 +58,7 @@ function Result({ prediction }) {
             </div>
 
         </div>
-        <div className="Model_Section_3 flex flex-row items-center gap-6 p-4 border rounded-lg shadow-lg">
-        <div class="flex decision_idea gap-4 pl-4">
-            <div class="w-64 flex-1 ">IDEA</div>
-            <div class="w-64 flex-1 ">{prediction.idea}</div>
-            <div class="w-64 flex-1 ">DECISION</div>
-            <div class="w-64 flex-1 ">{prediction.decision}</div>
-        </div>
-        </div>
+        
     </div>
     </div>
 
@@ -75,14 +69,14 @@ function Result({ prediction }) {
         <div className="Model_Section_1 flex flex-row items-center gap-6 p-4 border rounded-lg shadow-lg">
             <div className="flex flex-col items-center">
             <h3 className="text-lg font-bold mb-2">Past Data Prediction</h3>
-            <img className="Model_Sample_Image border " src={fsImage} alt="Sample Image" />
+            <img className="Model_Sample_Image" src={`http://localhost:5000/static/LSTM_${prediction.quote}.png`} alt="Prediction Chart" />
             </div>
             <div className="flex flex-col gap-4">
             <div className="border p-3 w-48 text-center">
-                <strong>Tomorrow's Prediction:</strong> {prediction.lr_pred}
+                <strong>Tomorrow's Prediction:</strong> {prediction.lstm_pred}
             </div>
             <div className="border p-3 w-48 text-center">
-                <strong>Error:</strong> {prediction.error_lr}
+                <strong>Error:</strong> {prediction.error_lstm}
             </div>
             </div>
 
@@ -92,12 +86,16 @@ function Result({ prediction }) {
             <div className="NextDays_Prediction p-6">
             <h3 className="text-lg font-bold mb-2">Next 7 Days Prediction</h3>
             <div className="Prediction">
-                {daysLabels.map((label, index) => (
-                <div key={index} className="day-label">
-                    <span className="label">{label} :</span> {prediction.forecast_set[index] !== undefined ? parseFloat(prediction.forecast_set[index]).toFixed(2) : 'No data'}
-                </div>
-                ))}
-            </div>
+  {daysLabels.map((label, index) => (
+    <div key={index} className="day-label">
+      <span className="label">{label} :</span>{' '}
+      {prediction.lstm_7days[index] !== undefined
+        ? parseFloat(prediction.lstm_7days[index]).toFixed(2)
+        : 'No data'}
+    </div>
+  ))}
+</div>
+
 
 
 
@@ -110,14 +108,7 @@ function Result({ prediction }) {
             </div>
 
         </div>
-        <div className="Model_Section_3 flex flex-row items-center gap-6 p-4 border rounded-lg shadow-lg">
-        <div class="flex decision_idea gap-4 pl-4">
-            <div class="w-64 flex-1 ">IDEA</div>
-            <div class="w-64 flex-1 ">{prediction.idea}</div>
-            <div class="w-64 flex-1 ">DECISION</div>
-            <div class="w-64 flex-1 ">{prediction.decision}</div>
-        </div>
-        </div>
+        
     </div>
     </div>
        {/*------------------------------------ARIMA MODEL------------------------------------------ */}
@@ -127,14 +118,14 @@ function Result({ prediction }) {
         <div className="Model_Section_1 flex flex-row items-center gap-6 p-4 border rounded-lg shadow-lg">
             <div className="flex flex-col items-center">
             <h3 className="text-lg font-bold mb-2">Past Data Prediction</h3>
-            <img className="Model_Sample_Image border " src={fsImage} alt="Sample Image" />
+            <img className="Model_Sample_Image"  src={`http://localhost:5000/static/ARIMA_${prediction.quote}.png`} alt="Prediction Chart" /> 
             </div>
             <div className="flex flex-col gap-4">
             <div className="border p-3 w-48 text-center">
-                <strong>Tomorrow's Prediction:</strong> {prediction.lr_pred}
+                <strong>Tomorrow's Prediction:</strong> {prediction.arima_pred}
             </div>
             <div className="border p-3 w-48 text-center">
-                <strong>Error:</strong> {prediction.error_lr}
+                <strong>Error:</strong> {prediction.error_arima}
             </div>
             </div>
 
@@ -144,12 +135,16 @@ function Result({ prediction }) {
             <div className="NextDays_Prediction p-6">
             <h3 className="text-lg font-bold mb-2">Next 7 Days Prediction</h3>
             <div className="Prediction">
-                {daysLabels.map((label, index) => (
-                <div key={index} className="day-label">
-                    <span className="label">{label} :</span> {prediction.forecast_set[index] !== undefined ? parseFloat(prediction.forecast_set[index]).toFixed(2) : 'No data'}
-                </div>
-                ))}
-            </div>
+  {daysLabels.map((label, index) => (
+    <div key={index} className="day-label">
+      <span className="label">{label} :</span>{' '}
+      {prediction.arima_forecast[index] !== undefined
+        ? parseFloat(prediction.arima_forecast[index]).toFixed(2)
+        : 'No data'}
+    </div>
+  ))}
+</div>
+
 
 
 
@@ -161,7 +156,9 @@ function Result({ prediction }) {
             </div>
 
         </div>
-        <div className="Model_Section_3 flex flex-row items-center gap-6 p-4 border rounded-lg shadow-lg">
+        
+    </div>
+    <div className="Model_Section_3 flex flex-row items-center gap-6 p-4 border rounded-lg shadow-lg mt-6">
         <div class="flex decision_idea gap-4 pl-4">
             <div class="w-64 flex-1 ">IDEA</div>
             <div class="w-64 flex-1 ">{prediction.idea}</div>
@@ -170,14 +167,13 @@ function Result({ prediction }) {
         </div>
         </div>
     </div>
-    </div>
 
 
             {/* <img src={`http://localhost:5000/static/LSTM_${prediction.quote}.png`} alt="Prediction Chart" />
             <img src={`http://localhost:5000/static/LR_${prediction.quote}.png`} alt="Prediction Chart" />
             <img src={`http://localhost:5000/static/ARIMA_${prediction.quote}.png`} alt="Prediction Chart" /> */}
 
-            <pre>{prediction ? JSON.stringify(prediction, null, 2) : "No data received"}</pre>
+            {/* <pre>{prediction ? JSON.stringify(prediction, null, 2) : "No data received"}</pre> */}
         </div>
     );
 }

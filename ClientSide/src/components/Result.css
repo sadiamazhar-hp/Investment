@@ -1,5 +1,5 @@
 .result-container{
-    border: 2px solid #000;
+   
     color: #fff;
 }
 h1{
@@ -34,7 +34,7 @@ h3{
     border: 2px solid #fff;
 }
 .Model_Sample_Image{
-    width: 600px;
+    width: 700px;
 }
 .NextDays_Prediction{
     border: 2px solid #fff;
@@ -59,3 +59,8 @@ h3{
     text-align: center;
     border: 1px solid #ffffff;
   }
+.Model_Section_3 div div:nth-child(even) {
+    background-color: white;
+    color: #063970;
+}
+  
